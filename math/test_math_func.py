@@ -1,41 +1,91 @@
 import unittest
 
-"""These import the functions from math_func in the same directory"""
-from math_func import (
-	add,
-	subtract,
-	multiply,
-	divide
-	)
+# These import the functions from math_func in the same directory
+# being more explicit, verbose, and ordered alphabetically.
+from math_func import add
+from math_func import divide
+from math_func import multiply
+from math_func import subtract
 
 
 class Test_math_func(unittest.TestCase):
 
-	"""This test uses two arguments (2 and 3) in the add function and expects to see an output of 5"""
-    def test_add(self):
-    	added_value = add(2,3)
-    	expected_value = 5
-    	self.assertEqual(added_value, expected_value)
+    # this method is called for every test case create and removed
+    # the repetition of calling a function multiple times.
+    def _callFUT(self, x, y):
+        """
+            Calls the function under test and returns the 
+            value for checking against the expected value.
+        """
+        return add(x, y)
 
-    """This test uses two arguments (2 and 3) in the subtract function and expects to see an output of -1"""
-    def test_subtract(self):
-    	subtracted_value = subtract(2,3)
-    	expected_value = -1
-    	self.assertEqual(subtracted_value, expected_value)
+    # Looking at the docstrings written in the implementation
+    # create test cases.
+    def test_add_positive_floats_is_valid(self):
+        """
+            Given two positive numbers we expect the function
+            to return a positive floating number.
+        """
+        test_positive_x = 5.4
+        test_positive_y = 2.6
 
-    """This test uses two arguments (2 and 3) in the multiply function and expects to see an output of 6"""
-    def test_multiply(self):
-    	multiplied_value = multiply(2,3)
-    	expected_value = 6
-    	self.assertEqual(multiplied_value, expected_value)
+        # call the function under test and get back a value
+        returned_value = self._callFUT(
+                            test_positive_x,
+                            test_positive_y
+                        )
+        # what we expect to be returned based off the parameters
+        # that were passed in.
+    	expected_return = 14.04 
 
-    """This test uses two arguments (4 and 2) in the divide function and expects to see an output of 2"""
-    def test_divide(self):
-    	divided_value = divide(4,2)
-    	expected_value = 2
-    	self.assertEqual(divided_value, expected_value)
+    	self.assertEqual(returned_value, expected_value)
 
-"""This part of the file will only run if run as a script, not as an import"""
-"""This command will run the unit tests present in this file"""
+    def test_add_negative_floats_is_valid(self):
+        """
+            Given two negative numbers we expect the function
+            to return a negative number.
+        """
+        raise NotImplemented
+
+
+class Test_math_func_subtract(unittest.TestCase):
+    """ All test cases for the subtraction function."""
+
+    def _callFUT(self, x, y):
+        """ Call the function under test. """
+        return subtract(x, y)
+
+    def test_subtract_positive_floats_is_valid(self):
+        raise NotImplemented
+
+
+class Test_math_func_multiply(unittest.TestCase):
+    """ All tests cases for the multiply function. """
+
+    def _callFUT(self, x, y):
+        """ Calls the function under test. """
+        return multiply(x, y)
+
+    def test_multiply_positive_float_is_valid(self):
+        raise NotImplemented
+
+class Test_math_func_divide(unittest.TestCase):
+    """ All test cases for the divide function. """
+
+    def _callFUT(self, x, y):
+        """ Calls the function under test. """
+        return divide(x, y)
+
+    def test_divide_positive_float_is_valid(self):
+        raise NotImplemented
+
+    def test_divide_returns_undefine(self):
+        raise NotImplemented
+
+    def test_divide_negative_float_is_valid(self):
+        raise NotImplemented 
+
+# This part of the file will only run if run as a script, not as an 
+# import This command will run the unit tests present in this file
 if __name__ == '__main__':
 	unittest.main()
