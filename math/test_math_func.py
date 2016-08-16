@@ -6,7 +6,7 @@ from math_func import (
 	divide
 	)
 
-
+#Create a class that inherits from TestCase class from unittest package
 class Test_math_func(unittest.TestCase):
 
     def test_add(self):
@@ -29,5 +29,6 @@ class Test_math_func(unittest.TestCase):
     	expected_value = 2
     	self.assertEqual(divided_value, expected_value)
 
+#Only run if ran, not imported
 if __name__ == '__main__':
 	unittest.main()
